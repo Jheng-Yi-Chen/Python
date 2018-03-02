@@ -27,6 +27,8 @@ equal_w['sum'] = equal_w.sum(axis = 1)
 equal_w['daily_R'] = equal_w['sum']/equal_w['sum'].shift(1) - 1
 sharp = equal_w['daily_R'].mean()/equal_w['daily_R'].std()*(252**0.5)
 equal_w['rolling_mean'] = pd.rolling_mean(equal_w['daily_R'], window = 60)
+equal_w['rolling_std'] = pd.rolling_std(equal_w['daily_R'], window = 60)
+equal_w['rolling_sharp'] = equal_w['rolling_mean']/equal_w['rolling_std']
 
 print('equal_w/n', equal_w.head())
 print('sharp', sharp)
@@ -34,7 +36,7 @@ print(equal_w.head())
 print(df_temp.head())
 df_temp.plot()
 equal_w['sum'].plot()
-equal_w['rolling_sharp'].plot(figsize(20, 15))
+equal_w['rolling_sharp'].plot(figsize = (20, 15))
 plt.show()
 
 # df = pd.read_csv('C:/Users/User/Python_Capital_20180131/output/2330.txt', index_col = 'date')
