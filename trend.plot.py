@@ -14,7 +14,7 @@ print(df_temp)
 symbols = ['2330', '2317', '1301', '1303']
 
 for symbol in symbols:
-    path = 'C:/Users/User/Python_Capital_20180131/output/' + symbol + '.txt'
+    path = 'output/' + symbol + '.txt'
     df = pd.read_csv(path, index_col = 'date')
     df = df.ix[:, ['close']]
     df = df.rename(columns = {'close':symbol})
@@ -39,7 +39,7 @@ equal_w['sum'].plot()
 equal_w['rolling_sharp'].plot(figsize = (20, 15))
 plt.show()
 
-# df = pd.read_csv('C:/Users/User/Python_Capital_20180131/output/2330.txt', index_col = 'date')
+# df = pd.read_csv('2330.txt', index_col = 'date')
 # df['MA'] = pd.rolling_mean(df.close, window = 60)
 # df['DayHigh'] = pd.rolling_max(df.high, window = 60)
 # df['DayLow'] = pd.rolling_min(df.low, window = 60)
